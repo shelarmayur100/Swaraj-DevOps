@@ -37,7 +37,7 @@ export default function BlogPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {blogPosts.map((post) => (
-          <Card key={post.url} className="flex flex-col">
+          <Card key={post.url} className="flex flex-col card-glow">
             <CardHeader>
               <CardTitle className="text-accent">{post.title}</CardTitle>
               <CardDescription>{post.description}</CardDescription>

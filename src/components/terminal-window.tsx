@@ -7,7 +7,7 @@ type TerminalWindowProps = {
 
 export function TerminalWindow({ children, title = "bash" }: TerminalWindowProps) {
   return (
-    <div className="w-full max-w-4xl rounded-lg border border-border bg-card shadow-lg">
+    <div className="w-full max-w-4xl rounded-lg border border-border bg-card shadow-[0_0_15px_hsl(var(--ring)/0.4)]">
       <div className="flex items-center justify-between h-8 rounded-t-lg bg-muted px-4">
         <div className="flex items-center gap-2">
           <span className="h-3 w-3 rounded-full bg-red-500"></span>

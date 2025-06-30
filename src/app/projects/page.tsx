@@ -59,7 +59,7 @@ export default async function ProjectsPage() {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project) => (
-            <Card key={project.id} className="flex flex-col">
+            <Card key={project.id} className="flex flex-col card-glow">
               <CardHeader>
                 <CardTitle className="text-accent">{project.name}</CardTitle>
                 <CardDescription>{project.description || 'No description provided.'}</CardDescription>

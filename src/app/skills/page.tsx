@@ -42,7 +42,7 @@ export default function SkillsPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {skills.map((skill) => (
-          <Card key={skill.name}>
+          <Card key={skill.name} className="card-glow">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-lg font-medium text-primary">
                 {skill.name}
