@@ -20,7 +20,7 @@ interface Repo {
 const featuredProjects = [
   'terraform-infra',
   'devops-project',
-  'Docker-projects',
+  'Docker-project',
   'jenkins-pipeline'
 ];
 
