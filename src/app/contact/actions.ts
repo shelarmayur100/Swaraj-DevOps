@@ -10,6 +10,11 @@ const sendEmailSchema = z.object({
 });
 
 export async function sendEmail(formData: { name: string; email: string; message: string; }) {
+  if (!process.env.RESEND_API_KEY) {
+    console.error('Resend API key is not configured.');
+    return { success: false, error: 'The contact form is not yet configured. Please contact the site owner directly.' };
+  }
+
   const parsed = sendEmailSchema.safeParse(formData);
 
   if (!parsed.success) {
