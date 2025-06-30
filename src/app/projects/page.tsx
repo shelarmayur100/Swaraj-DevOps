@@ -16,31 +16,25 @@ interface Repo {
   fork: boolean;
 }
 
-// Curated list of featured projects
-const featuredProjects = [
-  'aws-project',
-  'terraform-project',
-  'Docker-project',
-  'jenkins-pipeline'
-];
-
-
 async function getProjects(): Promise<Repo[]> {
   try {
-    const projectPromises = featuredProjects.map(async (repoName) => {
-      const res = await fetch(`https://api.github.com/repos/swarajsirsat/${repoName}`, {
-        next: { revalidate: 3600 }, // Revalidate every hour
-      });
-      if (!res.ok) {
-        console.error(`Failed to fetch GitHub project ${repoName}: ${res.status} ${res.statusText}`);
-        return null;
-      }
-      return res.json();
+    const res = await fetch(`https://api.github.com/users/swarajsirsat/repos?sort=pushed&direction=desc`, {
+      next: { revalidate: 3600 }, // Revalidate every hour
     });
 
-    const projects = await Promise.all(projectPromises);
-    // Filter out any projects that failed to fetch
-    return projects.filter((p): p is Repo => p !== null);
+    if (!res.ok) {
+      console.error(`Failed to fetch GitHub projects for swarajsirsat: ${res.status} ${res.statusText}`);
+      return [];
+    }
+    
+    const allRepos: Repo[] = await res.json();
+    
+    // Filter out forks and the profile README, then take the 4 most recently pushed.
+    const filteredRepos = allRepos
+      .filter(repo => !repo.fork && repo.name !== 'swarajsirsat')
+      .slice(0, 4);
+
+    return filteredRepos;
   } catch (error) {
     console.error('Error fetching GitHub projects:', error);
     return [];
@@ -54,11 +48,11 @@ export default async function ProjectsPage() {
     <div className="space-y-8">
       <div className="text-center">
         <h1 className="text-4xl font-bold font-headline">GitHub Projects</h1>
-        <p className="text-muted-foreground mt-2">A selection of my featured projects from GitHub.</p>
+        <p className="text-muted-foreground mt-2">A selection of my recent projects from GitHub.</p>
       </div>
 
       {projects.length === 0 ? (
-        <p className="text-center text-muted-foreground">Could not load featured projects from GitHub.</p>
+        <p className="text-center text-muted-foreground">Could not load projects from GitHub.</p>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project) => (
