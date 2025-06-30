@@ -3,7 +3,7 @@ import { Typewriter } from '@/components/typewriter';
 
 const introLines = [
   { type: 'command' as const, text: 'cat intro.txt' },
-  { type: 'response' as const, text: 'Cloud and DevOps Engineer with 4 years of experience in managing cloud infrastructure, CI/CD pipelines, and automation. Skilled in AWS, Azure, Docker, Terraform, and Jenkins. Strong background in deploying scalable, secure, and reliable systems. Experienced in monitoring and logging with Prometheus, Grafana, and ELK stack. Focused on improving performance, uptime, and development workflows.' },
+  { type: 'response' as const, text: "Hi, I'm Swaraj Sirsat — a passionate Cloud & DevOps Engineer with 4 years of hands-on experience in building, automating, and scaling cloud infrastructure." },
   { type: 'command' as const, text: './navigate.sh' },
   { type: 'response' as const, text: 'Use the navigation above to explore my skills, projects, and more.' }
 ];
