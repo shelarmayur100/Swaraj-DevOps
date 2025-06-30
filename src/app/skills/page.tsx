@@ -36,7 +36,7 @@ export default function SkillsPage() {
   return (
     <div className="space-y-8">
       <div className="text-center">
-        <h1 className="text-4xl font-bold font-headline">Skills Showcase</h1>
+        <h1 className="text-3xl md:text-4xl font-bold font-headline">Skills Showcase</h1>
         <p className="text-muted-foreground mt-2">My experience with key technologies.</p>
       </div>
 

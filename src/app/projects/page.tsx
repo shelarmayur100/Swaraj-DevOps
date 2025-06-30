@@ -2,7 +2,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Github } from 'lucide-react';
+import { Github } from 'lucide-react';
 import Link from 'next/link';
 
 interface Project {
@@ -39,7 +39,7 @@ export default function ProjectsPage() {
   return (
     <div className="space-y-8">
       <div className="text-center">
-        <h1 className="text-4xl font-bold font-headline">My Projects</h1>
+        <h1 className="text-3xl md:text-4xl font-bold font-headline">My Projects</h1>
         <p className="text-muted-foreground mt-2">A showcase of my work and experience.</p>
         <Button asChild className="mt-4">
             <Link href="https://github.com/swarajsirsat" target="_blank" rel="noopener noreferrer">

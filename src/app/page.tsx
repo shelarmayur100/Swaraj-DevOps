@@ -9,7 +9,7 @@ export default function Home() {
       <div className="mb-8 flex h-32 w-32 items-center justify-center rounded-full border-2 border-primary/50 bg-card shadow-lg">
         <Terminal className="h-20 w-20 text-primary" />
       </div>
-      <h1 className="text-5xl font-bold font-headline mb-8">
+      <h1 className="text-4xl md:text-5xl font-bold font-headline mb-8">
         Swaraj Sirsat
       </h1>
       <TerminalWindow title="~/welcome">
