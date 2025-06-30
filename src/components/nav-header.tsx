@@ -1,9 +1,11 @@
+
 'use client';
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { Code2 } from 'lucide-react';
+import { Code2, Github, Linkedin } from 'lucide-react';
+import { Button } from './ui/button';
 
 const navItems = [
   { href: '/', label: 'Home' },
@@ -42,8 +44,17 @@ export default function NavHeader() {
             ))}
           </nav>
         </div>
-        <div className="flex flex-1 items-center justify-end">
-          {/* Mobile nav could go here */}
+        <div className="flex flex-1 items-center justify-end space-x-2">
+           <Button variant="ghost" size="icon" asChild>
+              <Link href="https://github.com/swarajsirsat" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                  <Github className="h-5 w-5 text-foreground/80 hover:text-primary transition-colors" />
+              </Link>
+           </Button>
+            <Button variant="ghost" size="icon" asChild>
+              <Link href="https://linkedin.com/in/swaraj-sirsat-925440205" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                  <Linkedin className="h-5 w-5 text-foreground/80 hover:text-primary transition-colors" />
+              </Link>
+           </Button>
         </div>
       </div>
     </header>

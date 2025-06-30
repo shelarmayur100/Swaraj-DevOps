@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import './globals.css';
 import { cn } from '@/lib/utils';
@@ -28,7 +29,7 @@ export default function RootLayout({
       >
         <div className="relative flex min-h-screen flex-col">
           <NavHeader />
-          <main className="flex-1 container mx-auto px-4 py-8">{children}</main>
+          <main className="flex-1 container mx-auto px-4 py-8 animate-fade-in">{children}</main>
         </div>
         <Toaster />
       </body>

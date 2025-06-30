@@ -1,3 +1,4 @@
+
 'use client';
 import { useState, useRef, useEffect, KeyboardEvent } from 'react';
 import { ChevronRight } from 'lucide-react';
@@ -11,7 +12,7 @@ type OutputLine = {
 
 const resumeData = {
   help: `Available commands:
-'about'         -  Display summary
+'summary'       -  Display professional summary
 'experience'    -  Show work experience
 'education'     -  View education history
 'skills'        -  List technical skills
@@ -19,19 +20,32 @@ const resumeData = {
 'download'      -  Get a link to download the PDF resume
 'clear'         -  Clear the terminal screen
 'help'          -  Show this help message`,
-  about: "Hi, I'm Swaraj Sirsat — a passionate Cloud & DevOps Engineer with 4 years of hands-on experience in building, automating, and scaling cloud infrastructure.",
-  experience: `> Cloud & DevOps Engineer, Tech Solutions Inc. (2020-Present)
-  - Architected and maintained CI/CD pipelines for 20+ microservices using Jenkins and GitLab CI.
-  - Managed AWS infrastructure with Terraform, saving 30% in cloud costs.`,
-  education: `> M.S. in Computer Science, University of Technology (2015)
-> B.S. in Information Systems, State College (2013)`,
-  skills: `Languages: Python, Bash, Go
-Cloud:     AWS, GCP
-IaC:       Terraform, Ansible
-CI/CD:     Jenkins, GitLab CI, ArgoCD
-Container: Docker, Kubernetes
-Monitor:   Prometheus, Grafana, ELK Stack`,
-  contact: `LinkedIn: linkedin.com/in/swaraj-sirsat-925440205
+  summary: "Cloud and DevOps Engineer with 4 years of experience in managing cloud infrastructure, CI/CD pipelines, and automation. Skilled in AWS, Azure, Docker, Terraform, and Jenkins. Strong background in deploying scalable, secure, and reliable systems. Experienced in monitoring and logging with Prometheus, Grafana, and ELK stack. Focused on improving performance, uptime, and development workflows.",
+  experience: `> TurnPoint PVT LTD (Sep 2024 - Present)
+  - Role: Cloud Engineer
+  - Designed and managed scalable Azure infrastructure (IaaS/PaaS).
+  - Automated infrastructure provisioning with Azure DevOps and PowerShell.
+  - Implemented advanced security with RBAC, PIM, and JIT access.
+
+> CloudThat PVT LTD (Aug 2021 - Sep 2024)
+  - Role: Azure & DevOps Engineer / AWS Cloud & DevOps Engineer
+  - Delivered end-to-end CI/CD automation using Azure DevOps.
+  - Designed and deployed scalable AWS infrastructure using CDK and CloudFormation.
+  - Containerized and deployed Node.js microservices using ECS Fargate.
+  - Set up monitoring with Prometheus, Grafana, and Alertmanager.`,
+  education: `> PG Diploma in Cloud Computing | RTMNU | 2021
+> Bachelor of Computer Applications (BCA) | RTMNU | 2020`,
+  skills: `Cloud:       AWS, Azure
+DevOps:      Azure DevOps, AWS CICD, Jenkins
+IaC:         Terraform, CloudFormation, CDK
+Containers:  Docker, ECS, EKS
+Security:    IAM, Azure Entra ID, Microsoft Defender, AWS Security
+Monitoring:  Prometheus, Grafana, ELK Stack
+Scripting:   PowerShell, Bash
+Other:       Microservices, Route 53, Load Balancing, Cron jobs`,
+  contact: `Email:    swarajsirsat6@gmail.com
+Phone:    +91-9404083967
+LinkedIn: linkedin.com/in/swaraj-sirsat-925440205
 GitHub:   github.com/swarajsirsat`,
   download: 'Click the button to download my resume.',
 };
@@ -60,7 +74,10 @@ export function InteractiveCli() {
       newOutput.push({ type: 'response', text: resumeData[cmd as keyof typeof resumeData] });
     } else if (cmd === 'clear') {
       newOutput = [];
-    } else {
+    } else if (cmd === 'about') { // Alias for summary
+      newOutput.push({ type: 'response', text: resumeData.summary });
+    }
+    else {
       newOutput.push({ type: 'error', text: `command not found: ${cmd}` });
     }
     setOutput(newOutput);
