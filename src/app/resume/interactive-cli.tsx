@@ -61,10 +61,6 @@ export function InteractiveCli() {
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [output]);
-  
-  useEffect(() => {
-    inputRef.current?.focus();
-  }, []);
 
   const handleCommand = (command: string) => {
     const cmd = command.toLowerCase().trim();
