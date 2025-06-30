@@ -19,7 +19,7 @@ const resumeData = {
 'download'      -  Get a link to download the PDF resume
 'clear'         -  Clear the terminal screen
 'help'          -  Show this help message`,
-  about: 'Hi, I\'m Swaraj Sirsat — a passionate Cloud & DevOps Engineer with 4 years of hands-on experience in building, automating, and scaling cloud infrastructure.',
+  about: 'Cloud and DevOps Engineer with 4 years of experience in managing cloud infrastructure, CI/CD pipelines, and automation. Skilled in AWS, Azure, Docker, Terraform, and Jenkins. Strong background in deploying scalable, secure, and reliable systems. Experienced in monitoring and logging with Prometheus, Grafana, and ELK stack. Focused on improving performance, uptime, and development workflows.',
   experience: `> Cloud & DevOps Engineer, Tech Solutions Inc. (2020-Present)
   - Architected and maintained CI/CD pipelines for 20+ microservices using Jenkins and GitLab CI.
   - Managed AWS infrastructure with Terraform, saving 30% in cloud costs.`,
