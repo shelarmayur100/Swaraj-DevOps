@@ -1,68 +1,95 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ArrowRight, GitBranch } from 'lucide-react';
+import { ArrowRight, Star, GitFork } from 'lucide-react';
 import Link from 'next/link';
 
-const projects = [
-  {
-    title: 'Automated CI/CD Pipeline for Microservices',
-    description: 'A robust, scalable CI/CD pipeline using Jenkins, Docker, and Kubernetes to automate testing and deployment of a microservices-based application.',
-    tags: ['Jenkins', 'Docker', 'Kubernetes', 'CI/CD'],
-    repoLink: 'https://github.com/example/cicd-pipeline'
-  },
-  {
-    title: 'Infrastructure as Code for E-commerce Platform',
-    description: 'Managed AWS infrastructure for a high-traffic e-commerce site using Terraform. Implemented auto-scaling, load balancing, and RDS for high availability.',
-    tags: ['Terraform', 'AWS', 'IaC', 'VPC'],
-    repoLink: 'https://github.com/example/terraform-aws'
-  },
-  {
-    title: 'Cloud Monitoring & Logging Solution',
-    description: 'Designed and deployed a centralized monitoring and logging system using Prometheus, Grafana, and the ELK Stack, providing real-time insights and alerts.',
-    tags: ['Prometheus', 'Grafana', 'ELK Stack', 'Monitoring'],
-    repoLink: 'https://github.com/example/monitoring-stack'
-  },
-  {
-    title: 'Serverless API Deployment',
-    description: 'Built and deployed a serverless API using AWS Lambda, API Gateway, and DynamoDB. Fully automated with the Serverless Framework.',
-    tags: ['AWS Lambda', 'Serverless', 'API Gateway', 'DynamoDB'],
-    repoLink: 'https://github.com/example/serverless-api'
-  }
-];
+interface Repo {
+  id: number;
+  name: string;
+  html_url: string;
+  description: string | null;
+  topics: string[];
+  stargazers_count: number;
+  forks_count: number;
+  language: string | null;
+  fork: boolean;
+}
 
-export default function ProjectsPage() {
+async function getProjects(): Promise<Repo[]> {
+  try {
+    const res = await fetch('https://api.github.com/users/swarajsirsat/repos?sort=pushed&per_page=12', {
+      next: { revalidate: 3600 }, // Revalidate every hour
+    });
+
+    if (!res.ok) {
+      console.error('Failed to fetch GitHub projects:', res.statusText);
+      return [];
+    }
+
+    const data: Repo[] = await res.json();
+    // Filter out forked repos and show the 6 most recently pushed to.
+    return data.filter(repo => !repo.fork).slice(0, 6);
+  } catch (error) {
+    console.error('Error fetching GitHub projects:', error);
+    return [];
+  }
+}
+
+export default async function ProjectsPage() {
+  const projects = await getProjects();
+
   return (
     <div className="space-y-8">
       <div className="text-center">
         <h1 className="text-4xl font-bold font-headline">GitHub Projects</h1>
-        <p className="text-muted-foreground mt-2">A selection of projects demonstrating my expertise.</p>
+        <p className="text-muted-foreground mt-2">A selection of my recent projects from GitHub.</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {projects.map((project) => (
-          <Card key={project.title} className="flex flex-col">
-            <CardHeader>
-              <CardTitle className="text-accent">{project.title}</CardTitle>
-              <CardDescription>{project.description}</CardDescription>
-            </CardHeader>
-            <CardContent className="flex-grow">
-              <div className="flex flex-wrap gap-2">
-                {project.tags.map(tag => (
-                  <Badge key={tag} variant="secondary" className="font-code">{tag}</Badge>
-                ))}
-              </div>
-            </CardContent>
-            <CardFooter>
-              <Button asChild variant="link" className="text-primary p-0 h-auto">
-                <Link href={project.repoLink} target="_blank" rel="noopener noreferrer">
-                  View on GitHub <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-            </CardFooter>
-          </Card>
-        ))}
-      </div>
+      {projects.length === 0 ? (
+        <p className="text-center text-muted-foreground">Could not load projects from GitHub or no public projects found.</p>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {projects.map((project) => (
+            <Card key={project.id} className="flex flex-col">
+              <CardHeader>
+                <CardTitle className="text-accent">{project.name}</CardTitle>
+                <CardDescription>{project.description || 'No description provided.'}</CardDescription>
+              </CardHeader>
+              <CardContent className="flex-grow space-y-4">
+                 <div className="flex flex-wrap gap-2">
+                  {project.topics.map(tag => (
+                    <Badge key={tag} variant="secondary" className="font-code">{tag}</Badge>
+                  ))}
+                </div>
+                <div className="flex items-center gap-4 pt-2 text-sm text-muted-foreground">
+                   {project.language && (
+                      <div className="flex items-center gap-1">
+                          <span className="h-3 w-3 rounded-full bg-primary" />
+                          <span>{project.language}</span>
+                      </div>
+                  )}
+                  <div className="flex items-center gap-1">
+                      <Star className="h-4 w-4" />
+                      <span>{project.stargazers_count}</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                      <GitFork className="h-4 w-4" />
+                      <span>{project.forks_count}</span>
+                  </div>
+                </div>
+              </CardContent>
+              <CardFooter>
+                <Button asChild variant="link" className="text-primary p-0 h-auto">
+                  <Link href={project.html_url} target="_blank" rel="noopener noreferrer">
+                    View on GitHub <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </CardFooter>
+            </Card>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
