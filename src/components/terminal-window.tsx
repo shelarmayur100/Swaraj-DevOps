@@ -17,7 +17,7 @@ export function TerminalWindow({ children, title = "bash" }: TerminalWindowProps
         <div className="text-sm font-code text-muted-foreground">{title}</div>
         <div className="w-16"></div>
       </div>
-      <div className="p-4 font-code text-primary min-h-[300px]">
+      <div className="p-4 font-code text-primary min-h-[300px] text-left">
         {children}
       </div>
     </div>
