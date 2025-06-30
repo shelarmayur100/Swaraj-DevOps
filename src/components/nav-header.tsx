@@ -10,6 +10,8 @@ import {
   SheetContent,
   SheetTrigger,
   SheetClose,
+  SheetHeader,
+  SheetTitle,
 } from '@/components/ui/sheet';
 
 const navItems = [
@@ -81,6 +83,9 @@ export default function NavHeader() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right">
+                <SheetHeader>
+                  <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
+                </SheetHeader>
                 <nav className="flex flex-col space-y-6 text-lg font-medium mt-8">
                   {navItems.map((item) => (
                     <SheetClose asChild key={item.href}>
