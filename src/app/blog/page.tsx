@@ -25,6 +25,11 @@ const blogPosts: BlogPost[] = [
     url: 'https://www.cloudthat.com/resources/blog/what-is-multi-cloud-an-overview-of-multi-cloud-computing',
     description: 'An introductory look at multi-cloud strategies, their benefits, and challenges in modern cloud computing.',
   },
+  {
+    title: 'Top 5 Popular DevOps Tools in 2022',
+    url: 'https://www.cloudthat.com/resources/blog/top-5-popular-devops-tools-in-2022',
+    description: 'An overview of the most popular and essential tools in the DevOps ecosystem for 2022.',
+  }
 ];
 
 export default function BlogPage() {
