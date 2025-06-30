@@ -5,8 +5,8 @@ import NavHeader from '@/components/nav-header';
 import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
-  title: 'DevOps Portfolio',
-  description: 'A portfolio for a DevOps engineer.',
+  title: 'Swaraj Sirsat | DevOps Portfolio',
+  description: 'The portfolio for Swaraj Sirsat, a passionate Cloud & DevOps Engineer.',
 };
 
 export default function RootLayout({

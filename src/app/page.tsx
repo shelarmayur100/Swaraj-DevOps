@@ -6,10 +6,7 @@ export default function Home() {
   const introText = [
     { text: 'cat intro.txt', type: 'command' },
     {
-      text: `Name: John Doe
-Title: DevOps Engineer
-Experience: 8+ years of experience in automating, building, and deploying scalable infrastructures.
-`,
+      text: `Hi, I'm Swaraj Sirsat — a passionate Cloud & DevOps Engineer with 4 years of hands-on experience in building, automating, and scaling cloud infrastructure.`,
       type: 'response',
     },
     { text: './navigate.sh', type: 'command' },

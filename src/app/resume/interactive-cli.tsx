@@ -19,14 +19,10 @@ const resumeData = {
 'download'      -  Get a link to download the PDF resume
 'clear'         -  Clear the terminal screen
 'help'          -  Show this help message`,
-  about: 'Highly motivated DevOps Engineer with 8+ years of experience in designing, implementing, and managing cloud infrastructure. Proven ability to improve development pipelines, increase system reliability, and reduce operational costs.',
-  experience: `> Senior DevOps Engineer, Tech Solutions Inc. (2018-Present)
+  about: 'A passionate Cloud & DevOps Engineer with 4 years of hands-on experience in building, automating, and scaling cloud infrastructure.',
+  experience: `> Cloud & DevOps Engineer, Tech Solutions Inc. (2020-Present)
   - Architected and maintained CI/CD pipelines for 20+ microservices using Jenkins and GitLab CI.
-  - Managed AWS infrastructure with Terraform, saving 30% in cloud costs.
-
-> DevOps Engineer, Cloud Innovators (2015-2018)
-  - Containerized legacy applications using Docker, improving deployment speed by 200%.
-  - Implemented monitoring and alerting with Prometheus and Grafana.`,
+  - Managed AWS infrastructure with Terraform, saving 30% in cloud costs.`,
   education: `> M.S. in Computer Science, University of Technology (2015)
 > B.S. in Information Systems, State College (2013)`,
   skills: `Languages: Python, Bash, Go
@@ -37,7 +33,7 @@ Container: Docker, Kubernetes
 Monitor:   Prometheus, Grafana, ELK Stack`,
   contact: `Email: john.doe@email.com
 LinkedIn: linkedin.com/in/johndoe-devops
-GitHub:   github.com/example`,
+GitHub:   github.com/swarajsirsat`,
   download: 'Click the button to download my resume.',
 };
 
@@ -96,7 +92,7 @@ export function InteractiveCli() {
          {output[output.length - 1]?.text === resumeData.download && (
           <div className="mt-2">
             <Button asChild>
-              <a href="/resume.pdf" download="JohnDoe_Resume.pdf">
+              <a href="/resume.pdf" download="SwarajSirsat_Resume.pdf">
                 <Download className="mr-2 h-4 w-4" />
                 Download PDF
               </a>
