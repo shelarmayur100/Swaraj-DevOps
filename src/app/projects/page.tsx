@@ -16,7 +16,7 @@ interface Repo {
   fork: boolean;
 }
 
-const projectNames = ['terraform-project', 'Buildspec-for-eks-codepipeline'];
+const projectNames = ['terraform-project', 'Devops-project'];
 
 async function getProject(repoName: string): Promise<Repo | null> {
   try {
