@@ -16,30 +16,33 @@ interface Repo {
   fork: boolean;
 }
 
-async function getProjects(): Promise<Repo[]> {
+const projectNames = ['terraform-infra', 'Buildspec-for-eks-codepipeline'];
+
+async function getProject(repoName: string): Promise<Repo | null> {
   try {
-    const res = await fetch(`https://api.github.com/users/swarajsirsat/repos?sort=pushed&direction=desc`, {
+    const res = await fetch(`https://api.github.com/repos/swarajsirsat/${repoName}`, {
       next: { revalidate: 3600 }, // Revalidate every hour
     });
 
     if (!res.ok) {
-      console.error(`Failed to fetch GitHub projects for swarajsirsat: ${res.status} ${res.statusText}`);
-      return [];
+      console.error(`Failed to fetch GitHub project ${repoName}: ${res.status} ${res.statusText}`);
+      return null;
     }
     
-    const allRepos: Repo[] = await res.json();
-    
-    // Filter out forks and the profile README, then take the 4 most recently pushed.
-    const filteredRepos = allRepos
-      .filter(repo => !repo.fork && repo.name !== 'swarajsirsat')
-      .slice(0, 4);
-
-    return filteredRepos;
+    return res.json();
   } catch (error) {
-    console.error('Error fetching GitHub projects:', error);
-    return [];
+    console.error(`Error fetching GitHub project ${repoName}:`, error);
+    return null;
   }
 }
+
+async function getProjects(): Promise<Repo[]> {
+    const projects = await Promise.all(
+        projectNames.map(name => getProject(name))
+    );
+    return projects.filter((p): p is Repo => p !== null);
+}
+
 
 export default async function ProjectsPage() {
   const projects = await getProjects();
@@ -48,7 +51,7 @@ export default async function ProjectsPage() {
     <div className="space-y-8">
       <div className="text-center">
         <h1 className="text-4xl font-bold font-headline">GitHub Projects</h1>
-        <p className="text-muted-foreground mt-2">A selection of my recent projects from GitHub.</p>
+        <p className="text-muted-foreground mt-2">A selection of my projects from GitHub.</p>
       </div>
 
       {projects.length === 0 ? (
