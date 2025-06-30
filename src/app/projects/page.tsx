@@ -19,7 +19,7 @@ interface Repo {
 // Curated list of featured projects
 const featuredProjects = [
   'aws-project',
-  'devops-project',
+  'terraform-project',
   'Docker-project',
   'jenkins-pipeline'
 ];
