@@ -10,24 +10,24 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: 'CI/CD Pipeline Architecture',
-    description: 'Architected and maintained CI/CD pipelines for 20+ microservices using Jenkins and GitLab CI, focusing on automation and reliability.',
-    tags: ['CI/CD', 'Jenkins', 'GitLab CI', 'Automation', 'Microservices'],
+    title: 'Azure CI/CD and Automation for EdTech',
+    description: 'Delivered end-to-end CI/CD automation using Azure DevOps. Developed PowerShell scripts for domain expiry alerts, automated AD reporting, and service validation. Deployed Dockerized applications and integrated SonarQube for code quality.',
+    tags: ['Azure', 'Azure DevOps', 'CI/CD', 'PowerShell', 'Docker', 'SonarQube'],
   },
   {
-    title: 'AWS Infrastructure Automation',
-    description: 'Managed AWS infrastructure with Terraform, leading to a 30% reduction in cloud costs through efficient resource management and automation.',
-    tags: ['AWS', 'Terraform', 'IaC', 'Cost Optimization'],
+    title: 'Scalable AWS Infrastructure for a Multi-Environment Setup',
+    description: 'Designed and deployed scalable AWS infrastructure using CDK and CloudFormation. Built fully automated CI/CD pipelines with AWS CodePipeline. Containerized and deployed Node.js microservices using ECS Fargate and secured services with AWS WAF.',
+    tags: ['AWS', 'CDK', 'CloudFormation', 'CI/CD', 'CodePipeline', 'ECS Fargate', 'Microservices'],
   },
   {
-    title: 'EKS Deployment Automation',
-    description: 'Automated application deployments to Amazon EKS using a CI/CD pipeline built with AWS CodePipeline and CloudFormation.',
-    tags: ['Amazon EKS', 'CodePipeline', 'CloudFormation', 'Kubernetes'],
+    title: 'DevOps and Monitoring for E-Learning Platform',
+    description: 'Managed Jenkins pipelines and cron jobs for automated deployments. Automated SSL certificate lifecycle with Bash scripting. Set up a comprehensive monitoring stack using Prometheus, Grafana, and Alertmanager.',
+    tags: ['AWS', 'Jenkins', 'Bash', 'Prometheus', 'Grafana', 'Monitoring'],
   },
   {
-    title: 'DevOps Project Implementation',
-    description: 'A comprehensive project demonstrating various DevOps practices and tools for a complete software development lifecycle.',
-    tags: ['DevOps', 'CI/CD', 'Docker', 'Jenkins'],
+    title: 'Secure and Scalable Azure Infrastructure Management',
+    description: 'Designed and managed scalable Azure infrastructure (IaaS/PaaS). Implemented advanced security with RBAC, PIM, and JIT. Integrated on-premises systems with Azure AD and managed endpoint security with Microsoft Defender and Intune.',
+    tags: ['Azure', 'IaC', 'PowerShell', 'Azure AD', 'Security', 'Microsoft Defender', 'Intune'],
   }
 ];
 
