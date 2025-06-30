@@ -6,7 +6,7 @@ export default function Home() {
   const introText = [
     { text: 'cat intro.txt', type: 'command' },
     {
-      text: `Hi, I'm Swaraj Sirsat — a passionate Cloud & DevOps Engineer with 4 years of hands-on experience in building, automating, and scaling cloud infrastructure.`,
+      text: `A passionate Cloud & DevOps Engineer with 4 years of hands-on experience in building, automating, and scaling cloud infrastructure.`,
       type: 'response',
     },
     { text: './navigate.sh', type: 'command' },
@@ -16,6 +16,9 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center justify-center h-full">
+      <h1 className="text-5xl font-bold font-headline mb-8 text-center">
+        Swaraj Sirsat
+      </h1>
       <TerminalWindow title="~/welcome">
         <Typewriter lines={introText} />
       </TerminalWindow>

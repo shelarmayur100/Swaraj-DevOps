@@ -16,20 +16,31 @@ interface Repo {
   fork: boolean;
 }
 
+// Curated list of featured projects
+const featuredProjects = [
+  'terraform-infra',
+  'devops-project',
+  'Docker-projects',
+  'jenkins-pipeline'
+];
+
+
 async function getProjects(): Promise<Repo[]> {
   try {
-    const res = await fetch('https://api.github.com/users/swarajsirsat/repos?sort=pushed&per_page=12', {
-      next: { revalidate: 3600 }, // Revalidate every hour
+    const projectPromises = featuredProjects.map(async (repoName) => {
+      const res = await fetch(`https://api.github.com/repos/swarajsirsat/${repoName}`, {
+        next: { revalidate: 3600 }, // Revalidate every hour
+      });
+      if (!res.ok) {
+        console.error(`Failed to fetch GitHub project ${repoName}: ${res.status} ${res.statusText}`);
+        return null;
+      }
+      return res.json();
     });
 
-    if (!res.ok) {
-      console.error('Failed to fetch GitHub projects:', res.statusText);
-      return [];
-    }
-
-    const data: Repo[] = await res.json();
-    // Filter out forked repos and show the 6 most recently pushed to.
-    return data.filter(repo => !repo.fork).slice(0, 6);
+    const projects = await Promise.all(projectPromises);
+    // Filter out any projects that failed to fetch
+    return projects.filter((p): p is Repo => p !== null);
   } catch (error) {
     console.error('Error fetching GitHub projects:', error);
     return [];
@@ -43,11 +54,11 @@ export default async function ProjectsPage() {
     <div className="space-y-8">
       <div className="text-center">
         <h1 className="text-4xl font-bold font-headline">GitHub Projects</h1>
-        <p className="text-muted-foreground mt-2">A selection of my recent projects from GitHub.</p>
+        <p className="text-muted-foreground mt-2">A selection of my featured projects from GitHub.</p>
       </div>
 
       {projects.length === 0 ? (
-        <p className="text-center text-muted-foreground">Could not load projects from GitHub or no public projects found.</p>
+        <p className="text-center text-muted-foreground">Could not load featured projects from GitHub.</p>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project) => (
