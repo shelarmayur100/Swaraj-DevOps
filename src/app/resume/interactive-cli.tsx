@@ -114,7 +114,7 @@ export function InteractiveCli() {
         <div ref={scrollRef} />
       </div>
 
-      <div className="flex items-center mt-4">
+      <div className="flex items-center mt-4 p-2 rounded-md border border-input focus-within:border-ring focus-within:ring-1 focus-within:ring-ring/50 transition-colors">
         <span className="flex-shrink-0 flex items-center text-accent">
           ~<ChevronRight className="h-4 w-4" />
         </span>

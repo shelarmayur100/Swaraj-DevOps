@@ -11,7 +11,6 @@ import {
   Search
 } from 'lucide-react';
 import type { ReactNode } from 'react';
-import Image from 'next/image';
 
 interface Skill {
   name: string;
@@ -35,34 +34,24 @@ const skills: Skill[] = [
 interface Certification {
   name: string;
   issuer: string;
-  logoUrl: string;
-  logoHint: string;
 }
 
 const certifications: Certification[] = [
   {
     name: 'AWS Certified Solutions Architect – Associate',
     issuer: 'Amazon Web Services',
-    logoUrl: 'https://placehold.co/80x80.png',
-    logoHint: 'aws logo'
   },
   {
     name: 'Microsoft Certified: Azure Administrator Associate (AZ-104)',
     issuer: 'Microsoft',
-    logoUrl: 'https://placehold.co/80x80.png',
-    logoHint: 'azure logo'
   },
   {
     name: 'Microsoft Certified: Azure Fundamentals (AZ-900)',
     issuer: 'Microsoft',
-    logoUrl: 'https://placehold.co/80x80.png',
-    logoHint: 'azure logo'
   },
   {
     name: 'Oracle Cloud Infrastructure Foundations Associate',
     issuer: 'Oracle',
-    logoUrl: 'https://placehold.co/80x80.png',
-    logoHint: 'oracle logo'
   },
 ];
 
@@ -102,15 +91,7 @@ export default function SkillsPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {certifications.map((cert) => (
             <Card key={cert.name} className="card-glow">
-              <CardHeader className="flex flex-row items-center gap-4 space-y-0 p-4">
-                <Image
-                  src={cert.logoUrl}
-                  alt={`${cert.issuer} logo`}
-                  width={60}
-                  height={60}
-                  className="rounded-md"
-                  data-ai-hint={cert.logoHint}
-                />
+              <CardHeader className="p-4">
                 <div>
                   <CardTitle className="text-lg font-medium text-primary leading-tight">{cert.name}</CardTitle>
                   <CardDescription className="pt-1">{cert.issuer}</CardDescription>
