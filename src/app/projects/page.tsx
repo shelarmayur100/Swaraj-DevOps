@@ -1,14 +1,11 @@
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowRight } from 'lucide-react';
-import Link from 'next/link';
 
 interface Project {
   title: string;
   description: string;
   tags: string[];
-  url?: string;
 }
 
 const projects: Project[] = [
@@ -16,25 +13,21 @@ const projects: Project[] = [
     title: 'CI/CD Pipeline Architecture',
     description: 'Architected and maintained CI/CD pipelines for 20+ microservices using Jenkins and GitLab CI, focusing on automation and reliability.',
     tags: ['CI/CD', 'Jenkins', 'GitLab CI', 'Automation', 'Microservices'],
-    url: 'https://github.com/swarajsirsat'
   },
   {
     title: 'AWS Infrastructure Automation',
     description: 'Managed AWS infrastructure with Terraform, leading to a 30% reduction in cloud costs through efficient resource management and automation.',
     tags: ['AWS', 'Terraform', 'IaC', 'Cost Optimization'],
-    url: 'https://github.com/swarajsirsat/terraform-project'
   },
   {
     title: 'EKS Deployment Automation',
     description: 'Automated application deployments to Amazon EKS using a CI/CD pipeline built with AWS CodePipeline and CloudFormation.',
     tags: ['Amazon EKS', 'CodePipeline', 'CloudFormation', 'Kubernetes'],
-    url: 'https://github.com/swarajsirsat/Buildspec-for-eks-codepipeline'
   },
   {
     title: 'DevOps Project Implementation',
     description: 'A comprehensive project demonstrating various DevOps practices and tools for a complete software development lifecycle.',
     tags: ['DevOps', 'CI/CD', 'Docker', 'Jenkins'],
-    url: 'https://github.com/swarajsirsat/Devops-project'
   }
 ];
 
@@ -61,15 +54,6 @@ export default function ProjectsPage() {
                 ))}
               </div>
             </CardContent>
-            <CardFooter>
-              {project.url && (
-                <Button asChild variant="link" className="text-primary p-0 h-auto">
-                  <Link href={project.url} target="_blank" rel="noopener noreferrer">
-                    View Details <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              )}
-            </CardFooter>
           </Card>
         ))}
       </div>
