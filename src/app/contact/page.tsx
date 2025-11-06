@@ -9,7 +9,7 @@ export default function ContactPage() {
         <p className="text-muted-foreground mt-2">
           Use the terminal below to send me a message or connect with me on{' '}
           <a
-            href="https://linkedin.com/in/swaraj-sirsat-925440205"
+            href="https://www.linkedin.com/in/mayur-shelar-109b0b171/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-primary hover:underline"
