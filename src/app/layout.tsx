@@ -6,7 +6,7 @@ import NavHeader from '@/components/nav-header';
 import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
-  title: 'Swaraj Sirsat | DevOps Portfolio',
+  title: 'Mayur shelar | DevOps Portfolio',
   description: 'The portfolio for Swaraj Sirsat, a passionate Cloud & DevOps Engineer.',
 };
 
