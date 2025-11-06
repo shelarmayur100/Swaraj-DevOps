@@ -7,7 +7,7 @@ import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
   title: 'Mayur shelar | DevOps Portfolio',
-  description: 'The portfolio for Swaraj Sirsat, a passionate Cloud & DevOps Engineer.',
+  description: 'The portfolio for Mayur shelar, a passionate Cloud & DevOps Engineer.',
 };
 
 export default function RootLayout({
