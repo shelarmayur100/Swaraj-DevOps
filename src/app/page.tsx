@@ -10,7 +10,7 @@ export default function Home() {
         <Terminal className="h-20 w-20 text-primary" />
       </div>
       <h1 className="text-4xl md:text-5xl font-bold font-headline mb-8">
-        Swaraj Sirsat
+        Mayur Shelar
       </h1>
       <TerminalWindow title="~/welcome">
         <HomeCli />
