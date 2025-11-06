@@ -42,7 +42,7 @@ export default function ProjectsPage() {
         <h1 className="text-3xl md:text-4xl font-bold font-headline">My Projects</h1>
         <p className="text-muted-foreground mt-2">A showcase of my work and experience.</p>
         <Button asChild className="mt-4">
-            <Link href="https://github.com/swarajsirsat" target="_blank" rel="noopener noreferrer">
+            <Link href="https://github.com/shelarmayur100" target="_blank" rel="noopener noreferrer">
                 <Github className="mr-2"/> View on GitHub
             </Link>
         </Button>
